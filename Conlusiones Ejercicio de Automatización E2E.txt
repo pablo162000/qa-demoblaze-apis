@@ -1,0 +1,72 @@
+======================================================
+ CONCLUSIONES – PRUEBA AUTOMATIZADA E2E DEMOBLAZE
+======================================================
+
+1. RESULTADOS GENERALES
+
+La prueba End-to-End (E2E) se ejecutó de manera satisfactoria, validando el flujo completo de
+compra desde la selección de productos y la adición al carrito, hasta el proceso de checkout
+y la confirmación final de la orden. Se confirma la integridad funcional del proceso principal
+del negocio.
+
+------------------------------------------------------
+
+2. HALLAZGOS RELEVANTES (PUNTOS DE ATENCIÓN)
+
+Durante la ejecución de la prueba automatizada se identificaron los siguientes hallazgos:
+
+- Inestabilidad de la interfaz (alertas y modales):
+  La aplicación depende de alertas nativas del navegador y modales dinámicos, lo que introduce
+  posibles puntos de inestabilidad y requiere un manejo explícito dentro del código de
+  automatización.
+
+- Ausencia de selectores dedicados para testing:
+  No se identificaron atributos específicos para pruebas automatizadas (por ejemplo,
+  data-testid o data-cy). Esto obligó al uso de selectores basados en texto visible e
+  identificadores HTML generales, lo que puede incrementar la fragilidad de las pruebas ante
+  cambios menores en la interfaz.
+
+- Validación limitada a nivel backend:
+  La aplicación no expone estados HTTP claros ni códigos de respuesta definidos para algunas
+  acciones del flujo de compra, lo que limita la posibilidad de realizar validaciones más
+  profundas a nivel de servicios.
+
+------------------------------------------------------
+
+3. CONSIDERACIONES TÉCNICAS (USO DE CYPRESS)
+
+- Sincronización con el DOM:
+  Cypress facilitó la automatización de la prueba E2E al manejar de forma automática las
+  esperas implícitas y la sincronización con los cambios del DOM, reduciendo problemas de
+  flakiness durante la ejecución.
+
+- Uso de selectores basados en texto:
+  El uso de selectores basados en texto simula de manera efectiva el comportamiento real del
+  usuario final, enfocando la prueba en la experiencia de uso de la aplicación.
+
+------------------------------------------------------
+
+4. RECOMENDACIONES
+
+A partir de los hallazgos obtenidos, se recomienda:
+
+- Incorporar atributos específicos para testing (data-testid) en los elementos de la
+  interfaz, con el fin de mejorar la estabilidad y mantenibilidad de las pruebas
+  automatizadas.
+
+- Complementar las pruebas E2E con pruebas a nivel de servicios (APIs), permitiendo validar
+  la lógica de negocio y la consistencia de los datos de forma independiente a la interfaz
+  gráfica.
+
+- Mejorar el manejo de errores y la estandarización de los mensajes de respuesta del sistema,
+  facilitando su validación mediante pruebas automatizadas.
+
+------------------------------------------------------
+
+5. CONCLUSIÓN FINAL
+
+La prueba automatizada E2E cumple con los requerimientos funcionales solicitados y demuestra
+la viabilidad y efectividad de Cypress.io como herramienta robusta para la automatización de
+pruebas End-to-End en aplicaciones web.
+
+======================================================
